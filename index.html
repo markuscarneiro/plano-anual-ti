@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronograma de Auditoria - Data Center SWA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .etapa {
+            background: #f8f9ff;
+            border-left: 5px solid #667eea;
+            margin: 25px 0;
+            padding: 25px;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .etapa h2 {
+            color: #667eea;
+            margin-top: 0;
+            font-size: 1.8em;
+            border-bottom: 2px solid #e1e5fe;
+            padding-bottom: 10px;
+        }
+        
+        .etapa h3 {
+            color: #5a6fd8;
+            font-size: 1.3em;
+            margin-top: 25px;
+        }
+        
+        .etapa h4 {
+            color: #4a5bc4;
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        ul {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+        
+        strong {
+            color: #4a5bc4;
+        }
+        
+        .cronograma-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .cronograma-table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .cronograma-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e1e5fe;
+        }
+        
+        .cronograma-table tr:hover {
+            background: #f8f9ff;
+        }
+        
+        .destaque {
+            background: #e8f2ff;
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .resumo {
+            background: #667eea;
+            color: #ffffff !important;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .resumo h3 {
+            color: #ffffff !important;
+            margin-top: 0;
+        }
+        
+        /* CSS específico para impressão */
+        @media print {
+            body {
+                font-size: 12pt;
+                line-height: 1.4;
+                color: #000 !important;
+                background: white !important;
+            }
+            
+            .header {
+                background: none !important;
+                color: #000 !important;
+                border: 2px solid #000;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .etapa {
+                background: none !important;
+                border: 1px solid #333;
+                page-break-inside: avoid;
+                margin: 15px 0;
+            }
+            
+            .etapa h2 {
+                color: #000 !important;
+                border-bottom: 1px solid #000;
+            }
+            
+            .etapa h3, .etapa h4 {
+                color: #000 !important;
+            }
+            
+            .cronograma-table {
+                border: 1px solid #000;
+            }
+            
+            .cronograma-table th {
+                background: #f0f0f0 !important;
+                color: #000 !important;
+                border: 1px solid #000;
+            }
+            
+            .cronograma-table td {
+                border: 1px solid #000;
+            }
+            
+            .resumo {
+                background: #f0f0f0 !important;
+                color: #000 !important;
+                border: 2px solid #000;
+            }
+            
+            .resumo h3 {
+                color: #000 !important;
+            }
+            
+            .objetivo-box {
+                border: 1px solid #000;
+                background: white !important;
+            }
+            
+            /* Força quebra de página antes de certas seções */
+            .etapa:nth-child(6),
+            .etapa:nth-child(9) {
+                page-break-before: always;
+            }
+            
+            /* Evita quebra dentro de elementos */
+            .cronograma-table,
+            .objetivo-box,
+            .destaque {
+                page-break-inside: avoid;
+            }
+        }
+        
+        .objetivo-box {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Cronograma de Auditoria</h1>
+        <p style="font-size: 1.2em; margin: 10px 0 0 0;">Data Center SWA</p>
+    </div>
+
+    <div class="etapa">
+        <h2>ETAPA 1: IDENTIFICAÇÃO DOS RISCOS</h2>
+        
+        <h3>Riscos Principais:</h3>
+        
+        <h4><strong>Confidencialidade</strong></h4>
+        <ul>
+            <li>Acesso não autorizado aos dados dos clientes</li>
+            <li>Vazamento de informações sensíveis</li>
+            <li>Exposição de dados por falhas de segurança</li>
+        </ul>
+
+        <h4><strong>Integridade</strong></h4>
+        <ul>
+            <li>Alteração não autorizada de dados</li>
+            <li>Corrupção de informações durante processamento</li>
+            <li>Modificações não controladas em configurações</li>
+        </ul>
+
+        <h4><strong>Disponibilidade</strong></h4>
+        <ul>
+            <li>Indisponibilidade dos serviços críticos</li>
+            <li>Falhas de infraestrutura</li>
+            <li>Interrupções não planejadas</li>
+        </ul>
+    </div>
+
+    <div class="etapa">
+        <h2>ETAPA 2: DEFINIÇÃO DOS CRITÉRIOS DE AVALIAÇÃO</h2>
+        
+        <h3>Normas de Referência:</h3>
+        <ul>
+            <li><strong>ISO 27001</strong> - Gestão da Segurança da Informação</li>
+            <li><strong>ISO 20000</strong> - Gestão de Serviços de TI</li>
+        </ul>
+
+        <h3>Frameworks Aplicáveis:</h3>
+        <ul>
+            <li><strong>COBIT</strong> - Governança e gestão de TI</li>
+            <li><strong>NIST</strong> - Cybersecurity Framework</li>
+            <li><strong>CIS Controls</strong> - Controles de segurança específicos</li>
+        </ul>
+
+        <h3>Outros Critérios:</h3>
+        <ul>
+            <li><strong>Políticas internas da SWA</strong></li>
+            <li><strong>Contratos com clientes (SLAs)</strong></li>
+            <li><strong>Legislação aplicável (LGPD)</strong></li>
+        </ul>
+    </div>
+
+    <div class="etapa">
+        <h2>ETAPA 3: PLANEJAMENTO DA AUDITORIA</h2>
+        
+        <h3>Atividades de Planejamento:</h3>
+
+        <h4><strong>3.1. Reunião de Abertura</strong></h4>
+        <ul>
+            <li>Apresentação da equipe de auditoria</li>
+            <li>Alinhamento de expectativas</li>
+            <li>Definição de cronograma e recursos necessários</li>
+        </ul>
+
+        <h4><strong>3.2. Coleta de Documentação</strong></h4>
+        <ul>
+            <li>Políticas e procedimentos</li>
+            <li>Manuais operacionais</li>
+            <li>Relatórios de auditorias anteriores</li>
+            <li>Contratos e SLAs</li>
+        </ul>
+
+        <h4><strong>3.3. Definição de Amostras</strong></h4>
+        <ul>
+            <li>Seleção de sistemas críticos</li>
+            <li>Escolha de processos representativos</li>
+            <li>Definição de período de análise</li>
+        </ul>
+    </div>
+
+    <div class="etapa">
+        <h2>ETAPA 4: DEFINIÇÃO DOS OBJETIVOS</h2>
+        
+        <h3>Objetivos Principais:</h3>
+
+        <div class="objetivo-box">
+            <h4><strong>4.1. Confidencialidade e Integridade</strong></h4>
+            <ul>
+                <li>Garantir a proteção das informações armazenadas no Data Center</li>
+                <li>Verificar controles de acesso e criptografia</li>
+                <li>Avaliar processos de classificação de dados</li>
+            </ul>
+        </div>
+
+        <div class="objetivo-box">
+            <h4><strong>4.2. Disponibilidade e Performance</strong></h4>
+            <ul>
+                <li>Assegurar alta disponibilidade e performance da infraestrutura</li>
+                <li>Verificar redundância e tolerância a falhas</li>
+                <li>Avaliar tempos de resposta e SLAs</li>
+            </ul>
+        </div>
+
+        <div class="objetivo-box">
+            <h4><strong>4.3. Diversificação de Soluções</strong></h4>
+            <ul>
+                <li>Oferecer infraestrutura flexível para atender necessidades dos clientes</li>
+                <li>Verificar capacidade de adaptação</li>
+                <li>Avaliar portfólio de serviços</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="etapa">
+        <h2>ETAPA 5: DEFINIÇÃO DO ESCOPO</h2>
+        
+        <h3>Processos Incluídos no Escopo:</h3>
+
+        <h4><strong>5.1. Gestão de Configuração</strong></h4>
+        <ul>
+            <li>Controle de baselines</li>
+            <li>Gestão de mudanças de configuração</li>
+            <li>Inventário de ativos</li>
+        </ul>
+
+        <h4><strong>5.2. Gestão de Mudança/Implantação</strong></h4>
+        <ul>
+            <li>Processo de aprovação de mudanças</li>
+            <li>Controles de implementação</li>
+            <li>Rollback e contingência</li>
+        </ul>
+
+        <h4><strong>5.3. Monitoração do Ambiente</strong></h4>
+        <ul>
+            <li>Monitoramento de infraestrutura</li>
+            <li>Alertas e notificações</li>
+            <li>Análise de performance</li>
+        </ul>
+
+        <h4><strong>5.4. Backup</strong></h4>
+        <ul>
+            <li>Estratégias de backup</li>
+            <li>Testes de recuperação</li>
+            <li>Armazenamento seguro</li>
+        </ul>
+    </div>
+
+    <div class="etapa">
+        <h2>ETAPA 6: COLETA DE INFORMAÇÕES</h2>
+        
+        <h3>Informações a Coletar:</h3>
+
+        <h4><strong>6.1. Serviços e Infraestrutura</strong></h4>
+        <ul>
+            <li><strong>Tipos de serviços:</strong> Hosting, Collocation</li>
+            <li><strong>Infraestrutura e localidades</strong> físicas</li>
+            <li><strong>Dimensionamento:</strong> número de clientes e servidores</li>
+        </ul>
+
+        <h4><strong>6.2. Processos de Negócio</strong></h4>
+        <ul>
+            <li>Gestão de Mudança</li>
+            <li>Gestão de Configuração</li>
+            <li>Gestão de Incidentes</li>
+            <li>Segurança Física</li>
+            <li>Segurança Lógica</li>
+        </ul>
+
+        <h4><strong>6.3. Contexto Organizacional</strong></h4>
+        <ul>
+            <li><strong>Principais Clientes</strong> e seus requisitos</li>
+            <li><strong>Auditorias Anteriores</strong> e seus resultados</li>
+            <li><strong>Critérios aplicáveis:</strong> Leis, Políticas, Normas, Procedimentos, boas práticas</li>
+        </ul>
+    </div>
+
+    <div class="etapa">
+        <h2>ETAPA 7: EXECUÇÃO DA AUDITORIA</h2>
+        
+        <h3>Atividades de Execução:</h3>
+        <div class="destaque">
+            <ul>
+                <li><strong>7.1. Entrevistas</strong> com gestores e operadores</li>
+                <li><strong>7.2. Testes de controles</strong> técnicos e administrativos</li>
+                <li><strong>7.3. Observação</strong> de processos operacionais</li>
+                <li><strong>7.4. Análise</strong> de logs e evidências</li>
+                <li><strong>7.5. Validação</strong> de documentação</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="etapa">
+        <h2>ETAPA 8: CONSOLIDAÇÃO E RELATÓRIO</h2>
+        
+        <h3>Atividades de Consolidação:</h3>
+        <div class="destaque">
+            <ul>
+                <li><strong>8.1. Análise</strong> de evidências coletadas</li>
+                <li><strong>8.2. Identificação</strong> de não conformidades</li>
+                <li><strong>8.3. Classificação</strong> de achados por criticidade</li>
+                <li><strong>8.4. Elaboração</strong> de recomendações</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="etapa">
+        <h2>ETAPA 9: ENTREGÁVEIS</h2>
+        
+        <h3>Documentos a Produzir:</h3>
+
+        <h4><strong>9.1. Plano de Auditoria detalhado</strong></h4>
+        <ul>
+            <li>Metodologia e cronograma</li>
+            <li>Recursos necessários</li>
+            <li>Matriz de responsabilidades</li>
+        </ul>
+
+        <h4><strong>9.2. Papéis de trabalho</strong></h4>
+        <ul>
+            <li>Evidências coletadas</li>
+            <li>Testes realizados</li>
+            <li>Entrevistas documentadas</li>
+        </ul>
+
+        <h4><strong>9.3. Matriz de riscos e controles</strong></h4>
+        <ul>
+            <li>Mapeamento risco x controle</li>
+            <li>Avaliação de efetividade</li>
+            <li>Gaps identificados</li>
+        </ul>
+
+        <h4><strong>9.4. Relatório de auditoria</strong></h4>
+        <ul>
+            <li>Sumário executivo</li>
+            <li>Achados detalhados</li>
+            <li>Conclusões e opinião</li>
+        </ul>
+
+        <h4><strong>9.5. Plano de ação para não conformidades</strong></h4>
+        <ul>
+            <li>Ações corretivas recomendadas</li>
+            <li>Responsáveis e prazos</li>
+            <li>Cronograma de implementação</li>
+        </ul>
+    </div>
+
+    <div class="etapa">
+        <h2>CRONOGRAMA RESUMIDO</h2>
+        
+        <table class="cronograma-table">
+            <thead>
+                <tr>
+                    <th>Etapa</th>
+                    <th>Descrição</th>
+                    <th>Duração</th>
+                    <th>Responsável</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1-6</strong></td>
+                    <td>Preparação e Planejamento</td>
+                    <td>1 semana</td>
+                    <td>Auditor Líder</td>
+                </tr>
+                <tr>
+                    <td><strong>7</strong></td>
+                    <td>Execução dos Trabalhos</td>
+                    <td>3 semanas</td>
+                    <td>Equipe Auditoria</td>
+                </tr>
+                <tr>
+                    <td><strong>8-9</strong></td>
+                    <td>Consolidação e Relatório</td>
+                    <td>1 semana</td>
+                    <td>Auditor Líder</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="resumo">
+            <h3 style="margin-top: 0;">Duração Total: 5 semanas</h3>
+        </div>
+    </div>
+</body>
+</html>
